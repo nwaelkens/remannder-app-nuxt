@@ -2,7 +2,7 @@
   <div :class="commentClasses">
     <div class="level-item">
       <div class="avatar">
-        <figure class="image is-32x32">
+        <figure class="image is-64x64">
           <img class="avatar" src="/avatars/rianne.jpg" />
         </figure>
       </div>
@@ -57,7 +57,7 @@ img.avatar {
 }
 
 div.avatar {
-  width: 32px;
+  width: 64px;
 }
 
 div.comment {
