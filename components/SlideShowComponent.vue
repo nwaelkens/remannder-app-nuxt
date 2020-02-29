@@ -10,19 +10,18 @@
       autoplay
       :pause-on-hover="false"
     >
-      <div v-for="(carousel, i) in carousels" :key="i">
+      <div v-for="(moment, i) in moments" :key="i">
         <div
           class="slide hero is-large"
           :style="
-            'background-image: url(\'../../uploads/' +
-              carousel.file +
+            'background-image: url(\'' + assetBase + moment.image.url +
               '\');background-size: cover;'
           "
         >
           <foto-comment-component
-            :comment="carousel.content"
-            :user="1"
-            :position="carousel.position"
+            :position="(i%2) ? 'left':'right'"
+            :comment="moment.content"
+            :user="moment.user"
             class="foto-comment-component"
           ></foto-comment-component>
         </div>
@@ -33,51 +32,25 @@
 
 <script>
 import CommentComponent from "~/components/CommentComponent";
-import { VueAgile } from 'vue-agile'
-
+import { VueAgile } from "vue-agile";
 
 export default {
+  data() {
+    return {
+      assetBase: process.env.VUE_APP_ASSET_BASE
+    };
+  },
   components: {
     "foto-comment-component": CommentComponent,
     agile: VueAgile
   },
-  data() {
-    return {
-      carousels: [
-        {
-          file: "IMG_5358.JPG",
-          content:
-            "Gezellig buiten eten in de hut bij een vuurtje. U had het koud en had geen jas bij, u hebt die van mij aan :-)",
-          position: "left"
-        },
-        {
-          file: "IMG_5423.JPG",
-          content: "Spontaan opgepikt wandelmaatje.",
-          position: "right"
-        },
-        {
-          file: "IMG_5424.JPG",
-          content: "Zaterdag middag in het bos.",
-          position: "left"
-        },
-        {
-          file: "IMG_5425.JPG",
-          content: "Lekker spelen en pannekoeken eten in het bos",
-          position: "right"
-        },
-        {
-          file: "f2b94d42-70f6-4e8b-b82f-eb47120b5c94.JPG",
-          content: "Verhaaltje voorlezen aan Jozua.",
-          position: "left"
-        },
-        {
-          file: "IMG_5617.JPG",
-          content:
-            "Met uw broer Bram naar het 40 jarig huwelijk van uw broer Henk en zijn vrouw Dieuwke.",
-          position: "right"
-        }
-      ]
-    };
+  computed: {
+    moments: function() {
+      return this.$store.getters["moments/moments"];
+    }
+  },
+  mounted() {
+    console.log(this.moments);
   }
 };
 </script>

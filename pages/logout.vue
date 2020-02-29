@@ -4,6 +4,13 @@
       <slide-show-component></slide-show-component>
     </div>
     <div class="bottom-layer">
+      <b-modal :active="true"
+               has-modal-card
+               trap-focus
+               aria-role="dialog"
+               aria-modal>
+        Aan het uitloggen...
+      </b-modal>
       <week-calendar-component></week-calendar-component>
     </div>
   </section>
@@ -12,17 +19,18 @@
 <script>
   import SlideShowComponent from "~/components/SlideShowComponent";
   import WeekCalendarComponent from "~/components/WeekCalendarComponent";
+  import LoginComponent from "~/components/LoginComponent";
+
   export default {
     components: {
       WeekCalendarComponent,
-      SlideShowComponent
+      SlideShowComponent,
+      LoginComponent
     },
-    async fetch({store}) {
-      // await store.dispatch('users/fetchUsers');
-      await store.dispatch('events/fetchEvents');
-      await store.dispatch('moments/fetchMoments');
+    async mounted() {
+      await this.$auth.logout()
     }
-  }
+  };
 </script>
 
 <style scoped>

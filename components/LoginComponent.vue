@@ -1,5 +1,4 @@
 <template>
-<form action="">
   <div class="modal-card" style="width: auto">
     <header class="modal-card-head">
       <p class="modal-card-title">Login</p>
@@ -26,22 +25,45 @@
       <b-checkbox>Blijf ingelogd</b-checkbox>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-primary">Login</button>
+      <button class="button is-primary" @click="login">Login</button>
     </footer>
   </div>
-</form>
 </template>
 
 <script>
+  import { ConsoleLogger } from '~/shared/ConsoleLogger'
+
   export default {
-    props: ['email', 'password'],
+    // props: ['email', 'password'],
     data() {
       return {
         isComponentModalActive: false,
+        email: 'nathan.waelkens@gmail.com',
+        password: 'UqL6qiiN728HGzj2',
         formProps: {
-          email: '',
-          password: ''
+          email: 'nathan.waelkens@gmail.com',
+          password: 'UqL6qiiN728HGzj2',
+          error: null
         }
+      }
+    },
+    methods: {
+      async login() {
+        try {
+          this.$auth.loginWith('auth', {
+            data: {
+              identifier: this.email,
+              password: this.password
+            }
+          })
+          // this.$router.push('/')
+        } catch (e) {
+          console.log(e)
+          this.error = e.response.data.message
+          ConsoleLogger('[LoginComponent] ' + this.error, 'ERROR')
+        }
+
+        console.log(data);
       }
     }
   }
