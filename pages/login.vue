@@ -9,9 +9,9 @@
                trap-focus
                aria-role="dialog"
                aria-modal>
-        <login-component v-bind="formProps"></login-component>
+        <login-component></login-component>
       </b-modal>
-<!--      <week-calendar-component></week-calendar-component>-->
+      <week-calendar-component></week-calendar-component>
     </div>
   </section>
 </template>
@@ -26,15 +26,6 @@
       WeekCalendarComponent,
       SlideShowComponent,
       LoginComponent
-    },
-    data() {
-      return {
-        isComponentModalActive: true,
-        formProps: {
-          email: 'evan@you.com',
-          password: 'testing'
-        }
-      }
     }
   };
 </script>

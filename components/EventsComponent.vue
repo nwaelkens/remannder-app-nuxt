@@ -1,10 +1,7 @@
 <template>
   <ul class="events">
     <li v-for="(event, i) in events" :key="i" class="event">
-      <comment-component
-        :comment="event.content"
-        class="comment-component"
-      ></comment-component>
+      <comment-component :comment="event.content" :user="event.user" class="comment-component"></comment-component>
     </li>
   </ul>
 </template>
@@ -16,12 +13,12 @@ export default {
     CommentComponent
   },
   data() {
-    return {
-      events: [
-        { content: "Uw zus Riet komt vandaag." },
-        { content: "Eten bij ons! Kom lekker met de fiets, mag van Jeroen!" }
-      ]
-    };
+    return {};
+  },
+  computed: {
+    events() {
+      return this.$store.getters["events/events"];
+    }
   }
 };
 </script>

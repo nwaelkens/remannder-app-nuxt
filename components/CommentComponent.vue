@@ -3,7 +3,7 @@
     <div class="level-item">
       <div class="avatar">
         <figure class="image is-64x64">
-          <img class="avatar" src="/avatars/rianne.jpg" />
+          <img class="avatar" :src="assetBase + user.Avatar.url" />
         </figure>
       </div>
     </div>
@@ -22,12 +22,20 @@ export default {
       default: null,
       type: String
     },
-    user: null,
+    user: {
+      default: {},
+      type: Object
+    },
     addclasses: {
       default: "",
       type: String
     },
     position: ""
+  },
+  data() {
+    return {
+      assetBase: process.env.VUE_APP_ASSET_BASE
+    };
   },
   computed: {
     commentClasses: function() {
