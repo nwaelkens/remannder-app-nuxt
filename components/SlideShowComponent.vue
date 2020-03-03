@@ -48,9 +48,6 @@ export default {
     moments: function() {
       return this.$store.getters["moments/moments"];
     }
-  },
-  mounted() {
-    console.log(this.moments);
   }
 };
 </script>

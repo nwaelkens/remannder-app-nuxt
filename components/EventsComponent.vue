@@ -1,14 +1,26 @@
 <template>
   <ul class="events">
     <li v-for="(event, i) in events" :key="i" class="event">
-      <comment-component :comment="event.content" :user="event.user" class="comment-component"></comment-component>
+      {{ eventsForDate }}
+      {{ getEventsForDate(eventDate) }}
+      <comment-component
+        :comment="event.content"
+        :user="event.user"
+        class="comment-component"
+      ></comment-component>
     </li>
   </ul>
 </template>
 
 <script>
 import CommentComponent from "~/components/CommentComponent";
+import { mapGetters } from "vuex";
+import moment from "moment/moment";
+
 export default {
+  props: {
+    date: null
+  },
   components: {
     CommentComponent
   },
@@ -16,10 +28,21 @@ export default {
     return {};
   },
   computed: {
+    eventsForDate() {
+      console.log(this.eventDate, "eventdate");
+      return this.getEventsForDate(this.eventDate);
+    },
     events() {
       return this.$store.getters["events/events"];
+    },
+    ...mapGetters({
+      getEventsForDate: "events/getEventsForDate"
+    }),
+    eventDate() {
+      return moment(this.date).format("YYYY-MM-DD");
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 

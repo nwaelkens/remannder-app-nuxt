@@ -2,7 +2,11 @@
   <div class="weekCalendar">
     <date-time-component :now="now"></date-time-component>
     <div class="columns">
-      <div v-for="(position, index) in showHowManyDays" :key="index" class="column">
+      <div
+        v-for="(position, index) in showHowManyDays"
+        :key="index"
+        class="column"
+      >
         <day-calendar-component
           :isToday="getDate(position).getDay() === now.getDay()"
           :date="getDate(position)"

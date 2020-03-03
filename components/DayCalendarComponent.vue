@@ -2,7 +2,7 @@
   <div class="day" :class="isToday ? 'today' : ''">
     <div class="inside">
       <p class="name title is-5">{{ dayString }}</p>
-      <events-component></events-component>
+      <events-component :date="date"></events-component>
     </div>
   </div>
 </template>
