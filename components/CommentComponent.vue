@@ -2,7 +2,7 @@
   <div :class="commentClasses">
     <div class="level-item">
       <div class="avatar">
-        <figure class="image is-64x64">
+        <figure class="image is-96x96">
           <img class="avatar" :src="assetBase + user.Avatar.url" />
         </figure>
       </div>
@@ -54,8 +54,8 @@ export default {
 
 <style scoped>
 img.avatar {
-  border-radius: 5px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 96px;
+  border: 2px solid rgba(255, 255, 255, 1);
 }
 .items-to-left {
   float: left;
@@ -65,7 +65,8 @@ img.avatar {
 }
 
 div.avatar {
-  width: 64px;
+  width: 96px;
+  margin: 5px;
 }
 
 div.comment {

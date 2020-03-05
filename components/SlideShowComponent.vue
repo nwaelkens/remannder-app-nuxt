@@ -3,8 +3,8 @@
     <agile
       :nav-buttons="false"
       :dots="false"
-      :autoplay-speed="8000"
-      :speed="3000"
+      :autoplay-speed="12000"
+      :speed="5000"
       loop
       fade
       autoplay
@@ -19,7 +19,7 @@
           "
         >
           <foto-comment-component
-            :position="(i%2) ? 'left':'right'"
+            :position="(i%2) ? 'right':'right'"
             :comment="moment.content"
             :user="moment.user"
             class="foto-comment-component"

@@ -1,13 +1,7 @@
 <template>
   <ul class="events">
-    <li v-for="(event, i) in events" :key="i" class="event">
-      {{ eventsForDate }}
-      {{ getEventsForDate(eventDate) }}
-      <comment-component
-        :comment="event.content"
-        :user="event.user"
-        class="comment-component"
-      ></comment-component>
+    <li v-for="(event, i) in eventsForDate" :key="i" class="event">
+      <comment-component :comment="event.content" :user="event.user" class="comment-component"></comment-component>
     </li>
   </ul>
 </template>
@@ -29,11 +23,10 @@ export default {
   },
   computed: {
     eventsForDate() {
-      console.log(this.eventDate, "eventdate");
       return this.getEventsForDate(this.eventDate);
     },
     events() {
-      return this.$store.getters["events/events"];
+      return this.$store.getters["events/getEvents"];
     },
     ...mapGetters({
       getEventsForDate: "events/getEventsForDate"
@@ -42,7 +35,9 @@ export default {
       return moment(this.date).format("YYYY-MM-DD");
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.eventsForDate);
+  }
 };
 </script>
 

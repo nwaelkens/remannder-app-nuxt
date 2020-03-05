@@ -6,12 +6,8 @@ export const state = () => ({
 
 export const getters = {
   getEvents: state => state.events,
-  getEventsForDate: state => {
-    date => {
-      return state.events.find(event => {
-        event.id === date;
-      });
-    };
+  getEventsForDate: state => eventDate => {
+    return state.events.filter(event => event.date === eventDate);
   },
   getItemById: state => {
     id => {
