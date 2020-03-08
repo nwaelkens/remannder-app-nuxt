@@ -19,6 +19,9 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+  env: {
+    assetBase: process.env.VUE_APP_ASSET_BASE || "http://localhost:1337"
+  },
   router: {
     middleware: ["auth"]
   },

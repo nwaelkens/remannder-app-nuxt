@@ -37,7 +37,7 @@ import { VueAgile } from "vue-agile";
 export default {
   data() {
     return {
-      assetBase: process.env.VUE_APP_ASSET_BASE
+      assetBase: process.env.assetBase
     };
   },
   components: {
