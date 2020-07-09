@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       now: null,
-      showHowManyDays: 1,
+      showHowManyDays: 3,
       firstDayOffset: 0
     };
   },
