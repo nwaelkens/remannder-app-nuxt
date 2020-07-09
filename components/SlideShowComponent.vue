@@ -1,6 +1,7 @@
 <template>
   <div>
     <agile
+      v-if="!demoMode"
       :nav-buttons="false"
       :dots="false"
       :autoplay-speed="12000"
@@ -37,7 +38,8 @@ import { VueAgile } from "vue-agile";
 export default {
   data() {
     return {
-      assetBase: process.env.assetBase
+      assetBase: process.env.assetBase,
+      demoMode: false
     };
   },
   components: {
@@ -46,11 +48,15 @@ export default {
   },
   computed: {
     moments: function() {
-      return this.$store.getters["moments/moments"];
+      if (!this.demoMode) {
+        return this.$store.getters["moments/moments"];
+      }
     }
   },
   mounted() {
-    console.log(this.assetBase);
+    if (!this.$auth.loggedIn) {
+      this.demoMode = true;
+    }
   }
 };
 </script>

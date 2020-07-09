@@ -52,8 +52,6 @@ export default {
         this.error = e.response.data.message;
         ConsoleLogger("[LoginComponent] " + this.error, "ERROR");
       }
-
-      console.log(data);
     }
   }
 };
