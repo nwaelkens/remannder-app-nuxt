@@ -14,7 +14,7 @@ export const mutations = {
 
 export const actions = {
   async fetchMoments({ state, commit }) {
-    await this.$axios.get(`/moments?_limit=10`).then(response => {
+    await this.$axios.get(`/moments?_limit=100`).then(response => {
       commit("storeMoments", response.data);
     });
     return state.moments;
